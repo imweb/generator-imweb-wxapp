@@ -10,7 +10,7 @@ const assets = [
   '.editorconfig',
   '.eslintignore',
   '.eslintrc.js',
-  '.gitignore',
+  // '.gitignore',
   '.prettierrc',
   '.wepyignore',
   'wepy.config.js',
@@ -94,6 +94,9 @@ module.exports = class extends Generator {
   }
 
   writing() {
+    // 发布 npm 的时候，.gitignore 文件会被替换为 .npmignore，因此这里需要改文件名
+    this.fs.copy(this.templatePath('.gitignorefile'), this.destinationPath(`${this.props.appName}/.gitignore`))
+
     assets.forEach(item => {
       this.fs.copy(this.templatePath(item), this.destinationPath(`${this.props.appName}/${item}`))
     })
