@@ -1,0 +1,139 @@
+.f-btn-reset {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  overflow: auto;
+  &:after {
+    border: none;
+  }
+}
+
+.f-border-top,
+.f-border-bottom,
+.f-border-left,
+.f-border-right {
+  position: relative;
+}
+
+.f-border-top:before,
+.f-border-bottom:after,
+.f-border-left:before,
+.f-border-right:after {
+  display: block;
+
+  position: absolute;
+
+  content: ' ';
+}
+
+.f-border-top:before,
+.f-border-bottom:after {
+  right: 0;
+  left: 0;
+
+  border-top: 1px solid #e1e1e1;
+}
+
+.f-border-left:before,
+.f-border-right:after {
+  top: 0;
+  bottom: 0;
+
+  border-left: 1px solid #e1e1e1;
+}
+
+.f-border-top:before {
+  top: 0;
+}
+
+.f-border-bottom:after {
+  bottom: 0;
+}
+
+.f-border-left:before {
+  left: 0;
+}
+
+.f-border-right:after {
+  right: 0;
+}
+
+.f-border-1px {
+  position: relative;
+  &:after {
+    display: block;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    -webkit-transform: scale(1);
+    -webkit-transform-origin: 0 0;
+
+    content: '';
+    pointer-events: none;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+  .f-border-top:before,
+  .f-border-bottom:after {
+    -webkit-transform: scaleY(0.7);
+    -webkit-transform-origin: left top;
+  }
+  .f-border-left:before,
+  .f-border-right:after {
+    -webkit-transform: scaleX(0.7);
+    -webkit-transform-origin: left top;
+  }
+  .f-border-bottom:after {
+    -webkit-transform-origin: left bottom;
+  }
+  .f-border-right:after {
+    -webkit-transform-origin: right top;
+  }
+  .f-border-1px:after {
+    right: -42.857%;
+    bottom: -42.857%;
+
+    -webkit-transform: scale(0.7);
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .f-border-top:before,
+  .f-border-bottom:after {
+    transform: scaleY(0.5);
+  }
+  .f-border-left:before,
+  .f-border-right:after {
+    transform: scaleX(0.5);
+  }
+  .f-border-1px:after {
+    right: -100%;
+    bottom: -100%;
+
+    -webkit-transform: scale(0.5);
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+  .f-border-top:before,
+  .f-border-bottom:after {
+    transform: scaleY(0.3);
+  }
+  .f-border-left:before,
+  .f-border-right:after {
+    transform: scaleX(0.3);
+  }
+  .f-border-1px:after {
+    right: -233%;
+    bottom: -233%;
+
+    -webkit-transform: scale(0.3);
+  }
+}

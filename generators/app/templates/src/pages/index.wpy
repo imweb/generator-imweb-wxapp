@@ -1,0 +1,25 @@
+<style lang="scss">
+</style>
+
+<template>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+import { tdw } from '@tencent/imwxutils'
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarBackgroundColor: '#000',
+    navigationBarTitleText: '首页',
+    navigationBarTextStyle: 'white'
+  }
+
+  onLoad() {
+  }
+}
+
+// 增强页面
+tdw.initPage(Index)
+</script>

@@ -1,0 +1,41 @@
+{
+  "name": "<%= appName %>",
+  "version": "0.0.1",
+  "description": "<%= desc %>",
+  "main": "dist/app.js",
+  "scripts": {
+    "dev": "wepy build --watch",
+    "build": "cross-env NODE_ENV=production wepy build --no-cache",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "addPage": "yo imweb-wxapp:page"
+  },
+  "author": "<%= author %>",
+  "license": "MIT",
+  "dependencies": {
+    "@tencent/imwxutils": "^1.0.10",
+    "promise-polyfill": "^7.1.1",
+    "wepy": "^1.6.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "cross-env": "^5.1.3",
+    "eslint": "^3.18.0",
+    "eslint-config-standard": "^7.1.0",
+    "eslint-friendly-formatter": "^2.0.7",
+    "eslint-plugin-html": "^2.0.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "wepy-compiler-babel": "^1.5.1",
+    "wepy-compiler-sass": "^1.3.12",
+    "wepy-eslint": "^1.5.3",
+    "wepy-plugin-autoprefixer": "^1.5.10",
+    "wepy-plugin-imagemin": "^1.5.3",
+    "wepy-plugin-img2cloud": "^1.0.3",
+    "wepy-plugin-uglifyjs": "^1.3.7"
+  }
+}
