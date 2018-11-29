@@ -1,1 +1,3 @@
-dist/*
+node_modules
+miniprogram_npm
+mock

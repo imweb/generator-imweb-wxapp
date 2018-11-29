@@ -1,15 +1,32 @@
 {
-	"description": "<%= desc %>",
+	"miniprogramRoot": "miniprogram/",
 	"setting": {
-		"urlCheck": true,
-		"es6": false,
-		"postcss": false,
-		"minified": false,
-		"newFeature": true
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": true
 	},
-	"compileType": "miniprogram",
 	"appid": "<%= appid %>",
 	"projectname": "<%= appName %>",
-	"miniprogramRoot": "./dist",
-	"condition": {}
+	"libVersion": "2.0.9",
+	"packOptions": {
+		"ignore": [
+			{
+				"type": "folder",
+				"value": "node_modules"
+			},
+			{
+				"type": "suffix",
+				"value": ".map"
+			}
+		]
+	},
+	"scripts": {
+		"beforeCompile": "echo 1",
+		"beforePreview": "echo 2",
+		"beforeUpload": "./bin/beforeUpload.sh"
+	},
+	"compileType": "miniprogram"
 }

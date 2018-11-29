@@ -1,0 +1,10 @@
+{
+  "pages": [],
+  "window": {
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "<%= appNameInChinese %>",
+    "navigationBarTextStyle": "black"
+  }
+}

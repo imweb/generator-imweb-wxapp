@@ -1,6 +1,6 @@
 {
   "name": "generator-imweb-wxapp",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "imweb wxapp 项目脚手架",
   "main": "index.js",
   "keywords": [
@@ -21,7 +21,6 @@
   "homepage": "https://github.com/imweb/generator-imweb-wxapp#readme",
   "dependencies": {
     "chalk": "^1.1.3",
-    "fs-access": "^1.0.0",
     "imweb-git-user-name": "^0.1.0",
     "yeoman-generator": "^1.1.0"
   }
