@@ -4,8 +4,7 @@ yeoman generator插件，imweb 微信小程序项目脚手架
 ## Install
 
 ``` bash
-npm install yo
-npm install generator-imweb-wxapp
+npm install -g yo generator-imweb-wxapp
 ```
 
 ## Usage  
@@ -13,10 +12,4 @@ npm install generator-imweb-wxapp
 ```bash
 # 添加新项目
 yo imweb-wxapp:app
-
-# 进入项目目录
-cd test
-
-# 添加新页面
-yo imweb-wxapp:page
 ```
