@@ -10,6 +10,7 @@ npm install -g yo generator-imweb-wxapp
 ## Usage  
 
 ```bash
-# 添加新项目
+mkdir test
+cd test
 yo imweb-wxapp:app
 ```
