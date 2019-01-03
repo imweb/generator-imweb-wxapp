@@ -5,12 +5,16 @@
 
 ## 项目初始化
 
-### 1. 安装
+### 1. 安装及运行
 
 ```
 # 初始化依赖
 npm run init
+
+# 运行
+npm run dev
 ```
+
 
 最后，使用微信开发者工具新建项目，选择项目路径即可。
 
@@ -18,3 +22,4 @@ npm run init
 
 * [minapp](https://marketplace.visualstudio.com/items?itemName=qiu8310.minapp-vscode) 用于支持 wxml 代码高亮与代码片段
 * [vscode weapp api](https://marketplace.visualstudio.com/items?itemName=coderfee.vscode-weapp-api) 用于支持 wx api 代码片段
+* [Toggle Excluded Files](https://marketplace.visualstudio.com/items?itemName=eamodio.toggle-excluded-files) 用于隐藏 wxss 文件，只暴露 CSS 文件

@@ -4,6 +4,7 @@
   "description": "<%= appNameInChinese %>小程序",
   "main": "index.js",
   "scripts": {
+    "dev": "gulp dev",
     "init": "tnpm install && cd miniprogram && tnpm install",
     "lint": "./node_modules/.bin/eslint miniprogram",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,6 +16,23 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.7.0",
     "eslint-config-imweb": "^0.2.11",
-    "typed-we-app": "^1.7.0-update.6"
+    "gulp": "^3.9.1",
+    "gulp-cache": "^1.0.2",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "imagemin-gifsicle": "^5.2.0",
+    "imagemin-jpegtran": "^5.0.2",
+    "imagemin-optipng": "^5.2.1",
+    "imagemin-svgo": "^6.0.0",
+    "postcss-advanced-variables": "^2.3.3",
+    "postcss-extend-rule": "^2.0.0",
+    "postcss-font-base64": "^1.0.5",
+    "postcss-nested": "^4.1.0",
+    "postcss-partial-import": "^4.1.0",
+    "postcss-scss": "^2.0.0",
+    "postcss-url": "^8.0.0",
+    "run-sequence": "^2.2.1",
+    "svgo": "^1.0.5"
   }
 }
