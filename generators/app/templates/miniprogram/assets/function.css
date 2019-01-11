@@ -1,0 +1,28 @@
+:root {
+  /* 
+  * 红、绿、蓝色一般用于线条或 icon，如果要应用为文字则需要减少透明度10%，
+  * 如蓝色文字 color(var(--blue) l(-10%)) ，l 表示 lightness
+  */
+  --blue: var(--customBlue, #23b8ff);
+  --green: var(--customGreen, #00d798);
+  --red: var(--customRed, #ff6923);
+  --purple: var(--customPurple, #3461fe); /* 品牌紫色 */
+  --primary: var(--customPrimary, #23b8ff); /* 品牌色 */
+
+  --gray: var(--customGray, #777);
+  --grayLight:var(--customGrayLight, #bbb);
+  --grayBg: var(--customGrayBg, #eee);
+  --grayBgLight:var(--customGrayBgLight, #f4f4f4);
+  --grayLine: var(--customGrayLine, #ddd);
+
+  --colorLink: var(--customColorLink, color(var(--primary) l(-10%)));
+  --colorLinkHover: var(--customColorLinkHover, color(var(--colorLink) alpha(-10%)));
+  --colorOverlay: var(--customColorOverlay, rgba(0, 0, 0, .5));
+  --colorError: var(--customColorError, var(--red)); /* 和红色一致 */
+  --colorSuccess: var(--customColorSuccess, var(--green)); /* 和绿色一致*/
+
+  --zIndexHeader: var(--customZIndexHeader, 1000);
+  --zIndexFooter: var(--customZIndexFooter, 2000);
+  --zIndexPopup: var(--customZIndexPopup, 3000);
+  --zIndexOverlay: var(--customZIndexOverlay, 4000); /* 默认高于header和footer部分 */
+}
