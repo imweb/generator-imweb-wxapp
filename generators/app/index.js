@@ -9,7 +9,7 @@ const validator = require('../../lib/validator');
 
 const assets = ['.eslintrc', '.eslintignore', '.editorconfig', 'bin/beforeUpload.sh', 'bin/npm.sh', 'miniprogram', 'gulpfile.js', 'postcss.config.js', '.vscode/settings.json'];
 
-const dirs = ['miniprogram/assets', 'miniprogram/assets/images', 'miniprogram/components', 'miniprogram/pages'];
+const dirs = ['miniprogram/assets/images', 'miniprogram/components', 'miniprogram/pages'];
 
 const tpls = ['README.md', 'project.config.json', 'package.json', 'miniprogram/app.json'];
 

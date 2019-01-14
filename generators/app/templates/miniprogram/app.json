@@ -1,7 +1,5 @@
 {
-  "pages": [
-    "pages/index/index"
-  ],
+  "pages": [],
   "window": {
     "backgroundColor": "#ffffff",
     "backgroundTextStyle": "light",
