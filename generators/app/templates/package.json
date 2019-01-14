@@ -26,6 +26,8 @@
     "imagemin-optipng": "^5.2.1",
     "imagemin-svgo": "^6.0.0",
     "postcss-advanced-variables": "^2.3.3",
+    "postcss-color-function": "4.0.1",
+    "postcss-custom-properties": "^8.0.9",
     "postcss-extend-rule": "^2.0.0",
     "postcss-font-base64": "^1.0.5",
     "postcss-nested": "^4.1.0",

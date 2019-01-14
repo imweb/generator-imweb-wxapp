@@ -1,0 +1,5 @@
+@import "/assets/css/function.css";
+
+view {
+  color: var(--primary);
+}
