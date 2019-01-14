@@ -1,6 +1,6 @@
 {
   "name": "generator-imweb-wxapp",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "imweb wxapp 项目脚手架",
   "main": "index.js",
   "keywords": [

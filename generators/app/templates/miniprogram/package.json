@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@tencent/imwxutils": "^2.0.3"
+    "@tencent/imwxutils": "^2.1.0",
+    "regenerator-runtime": "^0.11.1"
   }
 }

@@ -2,15 +2,17 @@
 	"miniprogramRoot": "miniprogram/",
 	"setting": {
 		"urlCheck": false,
-		"es6": true,
-		"postcss": true,
-		"minified": true,
-		"newFeature": true,
-		"nodeModules": true
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "uglifyFileName": false
 	},
 	"appid": "<%= appid %>",
 	"projectname": "<%= appName %>",
-	"libVersion": "2.0.9",
+	"libVersion": "2.2.5",
 	"packOptions": {
 		"ignore": [
 			{
@@ -30,7 +32,7 @@
 	"scripts": {
 		"beforeCompile": "echo 1",
 		"beforePreview": "echo 2",
-		"beforeUpload": "./bin/beforeUpload.sh"
+		"beforeUpload": "echo 3"
 	},
 	"compileType": "miniprogram"
 }
