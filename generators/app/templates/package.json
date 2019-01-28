@@ -7,8 +7,14 @@
     "dev": "gulp dev",
     "init": "tnpm install && cd miniprogram && tnpm install",
     "lint": "./node_modules/.bin/eslint miniprogram",
+    "stylelint": "./node_modules/.bin/stylelint miniprogram/**/*.css",
+    "stylelint:fix": "./node_modules/.bin/stylelint miniprogram/**/*.css --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "pre-commit": [
+    "lint",
+    "stylelint"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -34,6 +40,10 @@
     "postcss-partial-import": "^4.1.0",
     "postcss-scss": "^2.0.0",
     "postcss-url": "^8.0.0",
+    "pre-commit": "^1.2.2",
+    "stylelint": "^9.10.1",
+    "stylelint-config-imweb": "^1.0.0",
+    "stylelint-config-standard": "^18.2.0",
     "svgo": "^1.0.5"
   }
 }
