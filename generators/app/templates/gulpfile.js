@@ -9,7 +9,7 @@ const src = './miniprogram';
 // 使用postcss
 gulp.task('css', () => {
   return gulp
-    .src(`${src}/**/*.css`)
+    .src([`${src}/**/*.css`, `!${src}/assets/*.css`])
     .pipe(postcss())
     .pipe(
       rename((path) => {
