@@ -1,4 +1,4 @@
-import { tdw } from './miniprogram_npm/@tencent/imwxutils/index';
+import { tdw } from '@tencent/imwxutils';
 
 App({
   onLaunch(options) {

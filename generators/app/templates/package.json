@@ -25,8 +25,10 @@
     "gulp": "^4.0.0",
     "gulp-cache": "^1.0.2",
     "gulp-imagemin": "^4.1.0",
+    "gulp-json-editor": "^2.5.0",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
     "imagemin-gifsicle": "^5.2.0",
     "imagemin-jpegtran": "^5.0.2",
     "imagemin-optipng": "^5.2.1",
@@ -44,6 +46,7 @@
     "stylelint": "^9.10.1",
     "stylelint-config-imweb": "^1.0.0",
     "stylelint-config-standard": "^18.2.0",
-    "svgo": "^1.0.5"
+    "svgo": "^1.0.5",
+    "through2": "^3.0.0"
   }
 }
