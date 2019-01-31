@@ -1,5 +1,5 @@
 // const gulp = require('gulp');
-const { watch, src, dest, parallel } = require('gulp');
+const { watch, src, dest, series, parallel } = require('gulp');
 const rename = require('gulp-rename');
 // const runSequence = require('run-sequence');
 const postcss = require('gulp-postcss');
@@ -8,30 +8,33 @@ const cache = require('gulp-cache'); // 使用缓存
 const replace = require('gulp-replace');
 const through2 = require('through2');
 const jeditor = require('gulp-json-editor');
+const gulpInstall = require('gulp-install');
 
 const srcDir = './miniprogram';
 // const appJson = require('./miniprogram/app.json');
 
 function css() {
-  return src([`${srcDir}/**/*.css`, `!${srcDir}/**/_*.css`])
-    .pipe(
-      postcss().on('error', function(err) {
-        console.error(err);
-        this.emit('end'); // 防止中断
-      })
-    )
-    // 去掉编译出来的 :root{}
-    .pipe(replace(/:root\s\{[^}]*\}?\s*/, ''))
-    .pipe(
-      rename(path => {
-        path.extname = '.wxss';
-      })
-    )
-    .pipe(
-      dest(file => {
-        return file.base; // 原目录
-      })
-    );
+  return (
+    src([`${srcDir}/**/*.css`, `!${srcDir}/**/_*.css`])
+      .pipe(
+        postcss().on('error', function(err) {
+          console.error(err);
+          this.emit('end'); // 防止中断
+        })
+      )
+      // 去掉编译出来的 :root{}
+      .pipe(replace(/:root\s\{[^}]*\}?\s*/, ''))
+      .pipe(
+        rename(path => {
+          path.extname = '.wxss';
+        })
+      )
+      .pipe(
+        dest(file => {
+          return file.base; // 原目录
+        })
+      )
+  );
 }
 
 function img() {
@@ -57,29 +60,30 @@ function img() {
     );
 }
 
-
 function nohost() {
   let host;
   if (process.argv[3]) {
     host = process.argv[3].split('=')[1];
   }
   return src(`${srcDir}/pages/*/*.wxml`)
-    .pipe(through2.obj((file, _, cb) => {
-      // console.log(file.contents.toString(), 'file');
-      if (file.isBuffer()) {
-        let contents = file.contents.toString();
-        // 如果没有加 nohost
-        if (!contents.includes('</nohost>')) {
-          if (host) {
-            contents += `<nohost host="${host}"></nohost>\r\n`;
-          } else {
-            contents += '<nohost></nohost>\r\n';
+    .pipe(
+      through2.obj((file, _, cb) => {
+        // console.log(file.contents.toString(), 'file');
+        if (file.isBuffer()) {
+          let contents = file.contents.toString();
+          // 如果没有加 nohost
+          if (!contents.includes('</nohost>')) {
+            if (host) {
+              contents += `<nohost host="${host}"></nohost>\r\n`;
+            } else {
+              contents += '<nohost></nohost>\r\n';
+            }
           }
+          file.contents = Buffer.from(contents);
         }
-        file.contents = Buffer.from(contents);
-      }
-      cb(null, file);
-    }))
+        cb(null, file);
+      })
+    )
     .pipe(
       dest(file => {
         return file.base; // 压缩到原目录
@@ -90,17 +94,19 @@ function nohost() {
 function nohostjson() {
   return src(`${srcDir}/app.json`)
     .pipe(
-      jeditor((json) => {
-        json.usingComponents = json.usingComponents && Object.keys(json.usingComponents).length > 0 ?
-          Object.assign(json.usingComponents, {
-            nohost: '@tencent/weapp-nohost',
-          }) :
-          {
-            nohost: '@tencent/weapp-nohost',
-          };
+      jeditor(json => {
+        json.usingComponents = // eslint-disable-line
+          json.usingComponents && Object.keys(json.usingComponents).length > 0
+            ? Object.assign(json.usingComponents, {
+                nohost: '@tencent/weapp-nohost', // eslint-disable-line
+              }) // eslint-disable-line
+            : {
+                nohost: '@tencent/weapp-nohost', // eslint-disable-line
+              }; // eslint-disable-line
         return json;
-      }, {
-        brace_style: 'expand',
+      },
+      {
+        end_with_newline: true,
       })
     )
     .pipe(
@@ -110,16 +116,26 @@ function nohostjson() {
     );
 }
 
+function nohostPkg() {
+  return src(`${srcDir}/package.json`).pipe(
+    gulpInstall({
+      args: ['--save', '@tencent/weapp-nohost', '--registry=http://r.tnpm.oa.com ', '--proxy=http://r.tnpm.oa.com:80'],
+    })
+  );
+}
+
 function removeNohost() {
   return src(`${srcDir}/pages/*/*.wxml`)
-    .pipe(through2.obj((file, _, cb) => {
-      if (file.isBuffer()) {
-        const contents = file.contents.toString();
-        // 如果没有加 nohost
-        file.contents = Buffer.from(contents.replace(/<nohost\s*\S*>.*<\/nohost>\r\n/igm, ''));
-      }
-      cb(null, file);
-    }))
+    .pipe(
+      through2.obj((file, _, cb) => {
+        if (file.isBuffer()) {
+          const contents = file.contents.toString();
+          // 如果没有加 nohost
+          file.contents = Buffer.from(contents.replace(/<nohost\s*\S*>.*<\/nohost>\r\n/gim, ''));
+        }
+        cb(null, file);
+      })
+    )
     .pipe(
       dest(file => {
         return file.base; // 压缩到原目录
@@ -127,14 +143,17 @@ function removeNohost() {
     );
 }
 
-function removeNhostJson() {
+function removeNohostJson() {
   return src(`${srcDir}/app.json`)
     .pipe(
-      jeditor((json) => {
+      jeditor(json => {
         if (json.usingComponents && json.usingComponents.nohost) {
           delete json.usingComponents.nohost;
         }
         return json;
+      },
+      {
+        end_with_newline: true,
       })
     )
     .pipe(
@@ -144,11 +163,36 @@ function removeNhostJson() {
     );
 }
 
-watch(`${srcDir}/**/*.css`, css);
+function removeNohostPkg() {
+  return src(`${srcDir}/package.json`)
+    .pipe(
+      jeditor(
+        json => {
+          if (json.dependencies && json.dependencies['@tencent/weapp-nohost']) {
+            delete json.dependencies['@tencent/weapp-nohost'];
+          }
+          return json;
+        },
+        {
+          end_with_newline: true,
+        }
+      )
+    )
+    .pipe(
+      dest(file => {
+        return file.base;
+      })
+    );
+}
 
+function watchCSS() {
+  watch(`${srcDir}/**/*.css`, css);
+}
+
+exports.watchCSS = watchCSS;
 exports.css = css;
 exports.img = img;
-exports.nohost = nohost;
-exports.nohost = parallel(nohost, nohostjson);
-exports.removeNohost = parallel(removeNohost, removeNhostJson);
-exports.default = parallel(css);
+exports.nohost = parallel(nohost, nohostjson, nohostPkg);
+exports.removeNohost = parallel(removeNohost, removeNohostJson, removeNohostPkg);
+exports.dev = series(css, watchCSS);
+exports.default = css;

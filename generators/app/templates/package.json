@@ -9,30 +9,57 @@
     "lint": "./node_modules/.bin/eslint miniprogram",
     "stylelint": "./node_modules/.bin/stylelint miniprogram/**/*.css",
     "stylelint:fix": "./node_modules/.bin/stylelint miniprogram/**/*.css --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nohost": "gulp nohost",
+    "rmnohost": "gulp removeNohost"
   },
-  "pre-commit": [
-    "lint",
-    "stylelint"
-  ],
+  "lint-staged": {
+    "*.{json,css,scss,md,wxss}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "node_modules/commitlint-config-imt/cz-config.js"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "babel-eslint": "^10.0.1",
+    "commitlint-config-imt": "0.0.4",
     "eslint": "^5.7.0",
     "eslint-config-imweb": "^0.2.11",
     "gulp": "^4.0.0",
     "gulp-cache": "^1.0.2",
     "gulp-imagemin": "^4.1.0",
+    "gulp-install": "^1.1.0",
     "gulp-json-editor": "^2.5.0",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
+    "husky": "^1.2.0",
     "imagemin-gifsicle": "^5.2.0",
     "imagemin-jpegtran": "^5.0.2",
     "imagemin-optipng": "^5.2.1",
     "imagemin-svgo": "^6.0.0",
+    "lint-staged": "^8.1.0",
     "postcss-advanced-variables": "^2.3.3",
     "postcss-color-function": "4.0.1",
     "postcss-custom-properties": "^8.0.9",
@@ -42,7 +69,7 @@
     "postcss-partial-import": "^4.1.0",
     "postcss-scss": "^2.0.0",
     "postcss-url": "^8.0.0",
-    "pre-commit": "^1.2.2",
+    "prettier": "^1.15.3",
     "stylelint": "^9.10.1",
     "stylelint-config-imweb": "^1.0.0",
     "stylelint-config-standard": "^18.2.0",
