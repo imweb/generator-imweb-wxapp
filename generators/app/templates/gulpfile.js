@@ -12,7 +12,6 @@ const jeditor = require('gulp-json-editor');
 const srcDir = './miniprogram';
 // const appJson = require('./miniprogram/app.json');
 
-
 function css() {
   return src([`${srcDir}/**/*.css`, `!${srcDir}/**/_*.css`])
     .pipe(

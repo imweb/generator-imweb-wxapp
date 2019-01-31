@@ -7,7 +7,7 @@ const chalk = require('chalk');
 
 const validator = require('../../lib/validator');
 
-const assets = ['.eslintrc', '.eslintignore', '.editorconfig', 'bin/beforeUpload.sh', 'bin/npm.sh', 'miniprogram', 'gulpfile.js', 'postcss.config.js', '.vscode/settings.json'];
+const assets = ['.eslintrc.js', '.eslintignore', '.editorconfig', 'bin/beforeUpload.sh', 'bin/npm.sh', 'miniprogram', 'gulpfile.js', 'postcss.config.js', '.vscode/settings.json'];
 
 const dirs = ['miniprogram/assets/images', 'miniprogram/components', 'miniprogram/pages'];
 
