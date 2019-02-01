@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "gulp dev",
+    "compress": "gulp img",
     "init": "tnpm install && cd miniprogram && tnpm install",
     "lint": "./node_modules/.bin/eslint miniprogram",
     "stylelint": "./node_modules/.bin/stylelint miniprogram/**/*.css",
