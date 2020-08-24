@@ -17,5 +17,10 @@ module.exports = {
     'postcss-url': {
       url: 'inline', // inline image to base64
     },
+    'postcss-map-get': {},
+    '@tencent/postcss-math-calc': {},
+    '@tencent/postcss-picasso-animation': {},
+    'postcss-discard-comments': {},
+     autoprefixer: {},
   },
 };
